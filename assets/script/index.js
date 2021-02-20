@@ -115,3 +115,21 @@ scope.querySelector('form').scope.oninput = function() {
     small.innerHTML = this.value.length +' / '+ this.maxLength;
 
 };
+scope.querySelector('form').onsubmit = function(e) { e.preventDefault();
+
+    summary.querySelector('form').summary.parentNode.click();
+
+    currentTarget = summary;
+    summary.scrollIntoView({
+        behavior: 'smooth'
+    });
+
+};
+scope.querySelector('form').onreset = function() {
+
+    currentTarget = type;
+    type.scrollIntoView({
+        behavior: 'smooth'
+    });
+
+};
