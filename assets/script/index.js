@@ -282,3 +282,80 @@ footer.querySelector('form').onreset = function() {
     });
 
 };
+
+
+significantChange.querySelector('form').onsubmit = function(e) { e.preventDefault();
+
+    if (type.querySelector('form').type.value == 'other' && type.querySelector('form > div > label[for="other"] > span > input').value.trim() == '') {
+
+        currentTarget = type;
+        type.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        setTimeout(() => type.querySelector('form button[type="submit"]').click(), 1000);
+
+    } else if (summary.querySelector('form').summary.value.trim() == '') {
+
+        currentTarget = summary;
+        summary.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        setTimeout(() => summary.querySelector('form button[type="submit"]').click(), 1000);
+
+    } if (type.querySelector('form').type.value == 'revert' && footer.querySelector('form').refs.value.trim() == '') {
+
+        currentTarget = footer;
+        footer.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        setTimeout(() => footer.querySelector('form button[type="submit"]').click(), 1000);
+
+    } else {
+
+        let footerContent = [];
+
+        if (footer.querySelector('form').closes.value.trim())
+            footerContent.push(`Closes: ${footer.querySelector('form').closes.value.trim().replace(/,/g, ', closes:')}`);
+
+        if (footer.querySelector('form').fixes.value.trim())
+            footerContent.push(`Fixes: ${footer.querySelector('form').fixes.value.trim().replace(/,/g, ', fixes:')}`);
+
+        if (footer.querySelector('form').resolves.value.trim())
+            footerContent.push(`Resolves: ${footer.querySelector('form').resolves.value.trim().replace(/,/g, ', resolves:')}`);
+
+        if (footer.querySelector('form').refs.value.trim())
+            footerContent.push(`Refs: ${footer.querySelector('form').refs.value.trim()}`);
+
+        if (footer.querySelector('form').coAuthoredBy.value.trim())
+            footer.querySelector('form').coAuthoredBy.value.trim().split(', ').forEach(e => footerContent.push('Co-authored-by: '+ e))
+
+        if (footer.querySelector('form').onBehalfOf.value.trim())
+            footerContent.push('on-behalf-of: '+ footer.querySelector('form').onBehalfOf.value.trim());
+
+        if (footer.querySelector('form').breakingChange.value.trim())
+            footerContent.push('BREAKING CHANGE: '+ footer.querySelector('form').breakingChange.value.trim());
+
+        result.querySelector('form').header.value = `${type.querySelector('form').type.value != 'other' ? type.querySelector('form').type.value : type.querySelector('form > div > label[for="other"] > span > input[name="otherType"]').value.trim()}${scope.querySelector('form').scope.value.trim() ? ' ('+ scope.querySelector('form').scope.value.trim() +')' : ''}${this.significantChange.checked ? '!' : ''}: ${summary.querySelector('form').summary.value.trim()}`;
+        result.querySelector('form').description.innerHTML = `${body.querySelector('form').body.value.trim() ? body.querySelector('form').body.value.trim() : ''}${body.querySelector('form').body.value.trim() && footerContent.length ? '\n\n' : ''}${footerContent.length ? footerContent.join('\n') : ''}`;
+        
+        result.querySelector('form > div > fieldset > code > span.value').innerHTML = `${result.querySelector('form').header.value}${result.querySelector('form').description.value.trim() ? (!body.querySelector('form').body.value.trim() && (footer.querySelector('form').coAuthoredBy.value.trim() || footer.querySelector('form').onBehalfOf.value.trim()) ? '<br><br><br>' : '<br><br>') + result.querySelector('form').description.value.trim().replace(/</g, '&lt;').replace(/>/g, '&gt;').split('\n').join('<br>') : ''}`;
+
+        currentTarget = result;
+        result.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+
+};
+significantChange.querySelector('form').onreset = function() {
+
+    currentTarget = footer;
+    footer.scrollIntoView({
+        behavior: 'smooth'
+    });
+
+};
