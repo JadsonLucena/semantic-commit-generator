@@ -163,3 +163,48 @@ summary.querySelector('form').summary.oninput = function() {
     summary.querySelector('form > div > label > small').innerHTML = this.value.length +' / '+ this.maxLength + '<sub>50 - '+ (50 - this.maxLength) +'</sub>';
 
 };
+summary.querySelector('form').onsubmit = function(e) { e.preventDefault();
+
+    if (e.submitter.classList.contains('finish')) {
+
+        significantChange.querySelector('form').significantChange.parentNode.click();
+        significantChange.querySelector('form').significantChange.checked = false;
+
+        currentTarget = significantChange;
+        significantChange.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    } else {
+
+        body.querySelector('form').body.parentNode.click();
+
+        currentTarget = body;
+        body.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+
+};
+summary.querySelector('form').onreset = function() {
+
+    if (type.querySelector('form').type.value == 'revert') {
+
+        currentTarget = type;
+        type.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    } else {
+
+        scope.querySelector('form').scope.parentNode.click();
+
+        currentTarget = scope;
+        scope.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+
+};
