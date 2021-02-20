@@ -77,6 +77,25 @@ main {
                     width: 800px;
                     max-width: calc(100% - 10px);
                 }
+                    main > section > form > div > label > small {
+                        float: right;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                    main > section > form > div > label > small.good {
+                        color: limegreen;
+                    }
+                    main > section > form > div > label > small.caution {
+                        color: gold;
+                    }
+                    main > section > form > div > label > small.danger {
+                        color: tomato;
+                    }
+                        main > section > form > div > label > small > sub {
+                            padding-left: 3px;
+                            font-size: 8px;
+                            font-weight: normal;
+                        }
                     main > section > form > div > label input[type="text"] {
                         margin: 5px 0;
                         padding: 7px 14px;
