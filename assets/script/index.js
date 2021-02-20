@@ -245,3 +245,16 @@ body.querySelector('form').onreset = function() {
     });
 
 };
+
+
+for (let text of footer.querySelectorAll('form > div > label > input[type="text"]')) {
+            
+    text.onblur = function() { // Standardize the message
+
+        this.value = this.value.trim();
+
+        this.value = this.value.split(',').map(e => e.trim()).filter(e => e).join(', ');
+
+    };
+
+}
