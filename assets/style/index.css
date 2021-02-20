@@ -147,6 +147,40 @@ main {
 
                         border-radius: 5px;
                     }
+                main > section#result > form > div > fieldset {
+                    position: relative;
+                    padding-top: 10px;
+                    border: none;
+                    width: 800px;
+                    max-width: 100%;
+                    border-top: 1px groove #333;
+                    text-align: center;
+                }
+                    main > section#result > form > div > fieldset > legend {
+                        user-select: none;
+                        padding: 10px;
+                        font-weight: bold;
+                    }
+                    main > section#result > form > div > fieldset > code {
+                        position: relative;
+                        display: block;
+                        padding: 20px;
+                        width: 100%;
+                        height: max-content;
+                        background: #2b2b2b;
+                        text-align: left;
+
+                        border-radius: 5px;
+                    }
+                        main > section#result > form > div > fieldset > code > span.command {
+                            color: #ffd700;
+                        }
+                        main > section#result > form > div > fieldset > code > span.parameter {
+                            color: #f8f8f2;
+                        }
+                        main > section#result > form > div > fieldset > code > span.value {
+                            color: #abe338;
+                        }
             main > section > form > nav {
                 position: absolute;
                 padding: 0 15px;
