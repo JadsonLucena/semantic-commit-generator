@@ -228,7 +228,35 @@
             </form>
 
         </section>
-        <section id="breakingChange"></section>
+        <section id="significantChange">
+
+            <details>
+                <summary>Significant Change</summary>
+                <ul>
+                    <li>It is possible to inform if the commit makes a significant change or breaks the compatibility, this inserts the identifier "!" after type/scope</li>
+                </ul>
+            </details>
+
+            <form>
+
+                <div>
+
+                    <label for="significantChangeInput">
+                        <em>
+                            <input type="checkbox" name="significantChange" id="significantChangeInput"> Is a significant change or does it break compatibility?
+                        </em>
+                    </label>
+
+                </div>
+
+                <nav>
+                    <button type="reset" class="previous"><< Previous</button>
+                    <button type="submit" class="next">Next >></button>
+                </nav>
+
+            </form>
+
+        </section>
         <section id="result"></section>
     </main>
 
