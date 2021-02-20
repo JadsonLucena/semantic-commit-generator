@@ -7,6 +7,9 @@ var significantChange = document.querySelector('body > main > section#significan
 var result = document.querySelector('body > main > section#result');
 
 
+var currentTarget = type;
+
+
 for (let checkBox of type.querySelectorAll('form > div > label > input')) {
 
     checkBox.onchange = function() {
@@ -29,3 +32,43 @@ for (let checkBox of type.querySelectorAll('form > div > label > input')) {
     };
 
 }
+type.querySelector('form').onsubmit = function(e) { e.preventDefault();
+
+    if (this.type.value == 'revert') {
+
+        summary.querySelector('form > nav > button.finish').style.display = 'none';
+        summary.querySelector('form').summary.parentNode.click();
+
+        body.querySelector('form > nav > button.finish').style.display = 'none';
+
+        footer.querySelector('form > div > label[for="refs"] > a').href = 'https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls#commit-shas';
+        footer.querySelector('form').refs.pattern = '^((, )?([a-fA-F0-9]{7}|([a-z\\d](?:[a-z\\d]|-(?=[a-z\\d])){0,38}(\\/[a-z\\d](?:[a-z\\d]|(-|\\.)(?=[a-z\\d])){0,38})?@[a-fA-F0-9]{7})))*$';
+        footer.querySelector('form').refs.placeholder = 'To SHA hash of commits being rolled back, add short references separated by commas';
+        footer.querySelector('form').refs.required = true;
+
+        currentTarget = summary;
+        summary.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    } else {
+
+        scope.querySelector('form').scope.parentNode.click();
+        
+        summary.querySelector('form > nav > button.finish').style.display = '';
+
+        body.querySelector('form > nav > button.finish').style.display = '';
+
+        footer.querySelector('form > div > label[for="refs"] > a').href = 'https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls';
+        footer.querySelector('form').refs.pattern = '^((, )?(((#|GH-)\\d+|[a-fA-F0-9]{7})|([a-z\\d](?:[a-z\\d]|-(?=[a-z\\d])){0,38}(\\/[a-z\\d](?:[a-z\\d]|(-|\\.)(?=[a-z\\d])){0,38})?(#\\d+|@[a-fA-F0-9]{7}))))*$';
+        footer.querySelector('form').refs.placeholder = 'To issues, pull requests and commits, add short references separated by commas';
+        footer.querySelector('form').refs.required = false;
+
+        currentTarget = scope;
+        scope.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+
+};
