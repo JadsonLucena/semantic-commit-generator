@@ -8,6 +8,13 @@ var result = document.querySelector('body > main > section#result');
 
 
 var currentTarget = type;
+window.onresize = () => {
+
+    currentTarget.scrollIntoView({
+        behavior: 'smooth'
+    });
+
+};
 
 
 for (let checkBox of type.querySelectorAll('form > div > label > input')) {
