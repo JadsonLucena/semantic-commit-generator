@@ -115,7 +115,37 @@
             </form>
 
         </section>
-        <section id="summary"></section>
+        <section id="summary">
+
+            <details>
+                <summary>Summary</summary>
+                <ul>
+                    <li>Use the imperative, present: "change" not "changed" nor "changes"</li>
+                    <li>Don't capitalize the first letter</li>
+                    <li>No dot (.) at the end</li>
+                </ul>
+            </details>
+
+            <form>
+
+                <div>
+
+                    <label for="summaryInput">
+                        <input type="text" name="summary" id="summaryInput" maxlength="50" placeholder="Briefly describe the change" required><br>
+                        <small>0 / 50</small>
+                    </label>
+
+                </div>
+
+                <nav>
+                    <button type="reset" class="previous"><< Previous</button>
+                    <button type="submit" class="finish">Finish</button>
+                    <button type="submit" class="next">Next >></button>
+                </nav>
+
+            </form>
+
+        </section>
         <section id="body"></section>
         <section id="footer"></section>
         <section id="breakingChange"></section>
