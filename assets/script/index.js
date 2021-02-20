@@ -359,3 +359,38 @@ significantChange.querySelector('form').onreset = function() {
     });
 
 };
+
+
+result.querySelector('form').onsubmit = function(e) { e.preventDefault();
+
+    if (confirm('Do you really want to generate another commit?')) {
+
+        type.querySelector('form > div > label[for="other"] > span').innerHTML = "<strong>other</strong>: Doesn't fit any of the suggested types?";
+        type.querySelector('form').reset();
+        scope.querySelector('form').reset();
+        summary.querySelector('form').reset();
+        body.querySelector('form').reset();
+        footer.querySelector('form').reset();
+        significantChange.querySelector('form').reset();
+
+        currentTarget = type;
+        type.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+
+};
+result.querySelector('form').onreset = function() {
+
+    let checked = significantChange.querySelector('form').significantChange.checked;
+
+    significantChange.querySelector('form').significantChange.parentNode.click();
+    significantChange.querySelector('form').significantChange.checked = checked;
+
+    currentTarget = significantChange;
+    significantChange.scrollIntoView({
+        behavior: 'smooth'
+    });
+
+};
