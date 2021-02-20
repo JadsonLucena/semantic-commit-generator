@@ -133,3 +133,33 @@ scope.querySelector('form').onreset = function() {
     });
 
 };
+
+
+summary.querySelector('form').summary.onblur = function() { // Standardize the message
+
+    this.value = this.value.trim();
+
+    this.value = 
+        this.value.slice(0, 1).toLocaleLowerCase() // Don't capitalize the first letter
+        +
+        this.value.slice(1).split('.').filter(e => e).join('.'); // No dot (.) at the end
+
+};
+summary.querySelector('form').summary.onfocus = function() {
+
+    let typeSize = type.querySelector('form').type.value.length;
+    let scopeSize = scope.querySelector('form').scope.value.trim().length;
+    let ornamentSize = (scopeSize ? ' ()!: ' : '!: ').length;
+
+    let maxLength = 50 - typeSize - scopeSize - ornamentSize;
+
+    this.maxLength = maxLength;
+
+    summary.querySelector('form > div > label > small').innerHTML = this.value.length +' / '+ this.maxLength + '<sub>50 - '+ (50 - this.maxLength) +'</sub>';
+
+};
+summary.querySelector('form').summary.oninput = function() {
+
+    summary.querySelector('form > div > label > small').innerHTML = this.value.length +' / '+ this.maxLength + '<sub>50 - '+ (50 - this.maxLength) +'</sub>';
+
+};
