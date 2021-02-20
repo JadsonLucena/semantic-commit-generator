@@ -176,7 +176,58 @@
             </form>
 
         </section>
-        <section id="footer"></section>
+        <section id="footer">
+
+            <details>
+                <summary>Footer</summary>
+                <ul>
+                    <li>It must contain all necessary references and relevant information about changes that break compatibility, if any</li>
+                </ul>
+            </details>
+
+            <form>
+
+                <div>
+
+                    <label for="closes">
+                        Closes: <a href="https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword" class="help" target="_blank" title="Help">?</a><br>
+                        <input type="text" name="closes" id="closes" pattern="^((,\s*)?([A-Za-z0-9][+A-Za-z0-9._-]*\/[A-Za-z0-9._-]+)?#\d+)*$" placeholder="#10, octo-org/octo-repo#100, ...">
+                    </label>
+                    <label for="fixes">
+                        Fixes: <a href="https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword" class="help" target="_blank" title="Help">?</a><br>
+                        <input type="text" name="fixes" id="fixes" pattern="^((,\s*)?([A-Za-z0-9][+A-Za-z0-9._-]*\/[A-Za-z0-9._-]+)?#\d+)*$" placeholder="#10, octo-org/octo-repo#100, ...">
+                    </label>
+                    <label for="resolves">
+                        Resolves: <a href="https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword" class="help" target="_blank" title="Help">?</a><br>
+                        <input type="text" name="resolves" id="resolves" pattern="^((,\s*)?([A-Za-z0-9][+A-Za-z0-9._-]*\/[A-Za-z0-9._-]+)?#\d+)*$" placeholder="#10, octo-org/octo-repo#100, ...">
+                    </label>
+                    <label for="refs">
+                        Refs: <a href="https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls" class="help" target="_blank" title="Help">?</a><br>
+                        <input type="text" name="refs" id="refs" pattern="^((,\s*)?(([A-Za-z0-9][+A-Za-z0-9._-]*\/[A-Za-z0-9._-]+)?#\d+|([A-Za-z0-9][+A-Za-z0-9._-]*(\/[A-Za-z0-9._-]+)?@)?([A-Fa-f0-9]{7}|[A-Fa-f0-9]{40})))*$" placeholder="#26, a5c3785, github/linguist#4039, jlord@a5c3785, jlord/sheetsee.js#26, jlord/sheetsee.js@a5c3785, ...">
+                    </label>
+                    <label for="coAuthoredBy">
+                        Co-authored-by: <a href="https://docs.github.com/en/github/committing-changes-to-your-project/creating-a-commit-with-multiple-authors#creating-co-authored-commits-on-the-command-line" class="help" target="_blank" title="Help">?</a><br>
+                        <input type="text" name="coAuthoredBy" id="coAuthoredBy" pattern="^((,\s*)?[A-Za-z0-9][+A-Za-z0-9._-]*\s<[A-Za-z0-9][+A-Za-z0-9._-]*@[^.]+(\.[^.>]+)+>)*$" placeholder="name <name@example.com>, another-name <another-name@example.com>, ...">
+                    </label>
+                    <label for="onBehalfOf">
+                        on-behalf-of: <a href="https://docs.github.com/en/github/committing-changes-to-your-project/creating-a-commit-on-behalf-of-an-organization" class="help" target="_blank" title="Help">?</a><br>
+                        <input type="text" name="onBehalfOf" id="onBehalfOf" pattern="^@[A-Za-z0-9][+A-Za-z0-9._-]*\s<[A-Za-z0-9][+A-Za-z0-9._-]*@[^.]+(\.[^.>]+)+>$" placeholder="@org <name@organization.com>">
+                    </label>
+                    <label for="breakingChange">
+                        BREAKING CHANGE: <a href="https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-footer" class="help" target="_blank" title="Help">?</a><br>
+                        <textarea name="breakingChange" id="breakingChange" minlength="20" placeholder="<breaking change summary>&#10;<BLANK LINE>&#10;<breaking change description + migration instructions>"></textarea>
+                    </label>
+
+                </div>
+
+                <nav>
+                    <button type="reset" class="previous"><< Previous</button>
+                    <button type="submit" class="next">Next >></button>
+                </nav>
+
+            </form>
+
+        </section>
         <section id="breakingChange"></section>
         <section id="result"></section>
     </main>
