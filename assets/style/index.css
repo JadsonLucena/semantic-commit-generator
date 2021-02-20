@@ -29,6 +29,107 @@ main {
         display: flex;
         flex-flow: column;
     }
+        main > section > details {
+            flex: 0;
+            position: relative;
+            padding: 10px;
+            width: 100%;
+            height: max-content;
+            background-color: #fafbfc;
+
+            box-shadow: 0 0 5px 0 #333;
+
+            z-index: 2;
+        }
+            main > section > details > summary {
+                cursor: pointer;
+            }
+            main > section > details > ul, main > section > details > p {
+                padding: 10px 10px 10px 30px;
+            }
+        main > section > form {
+            position: relative;
+            flex: 1;
+            width: 100%;
+
+            z-index: 1;
+        }
+            main > section > form > div {
+                position: absolute;
+                padding: 20px;
+                left: 0;
+                top: 50%;
+                width: 100%;
+                height: max-content;
+                max-height: calc(100% - 60px);
+                overflow: auto;
+
+                transform: translateY(calc(-50% - 30px));
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+                main > section > form > div > label {
+                    display: block;
+                    margin: 0 5px 10px 5px;
+                    float: left;
+                    width: 800px;
+                    max-width: calc(100% - 10px);
+                }
+                    main > section > form > div > label input[type="text"] {
+                        margin: 5px 0;
+                        padding: 7px 14px;
+                        border: none;
+                        border-bottom: 1px solid #aaa;
+                        width: 100%;
+                        font-size: 14px;
+
+                        border-radius: 5px;
+                    }
+                        main > section > form > div > label > span > input[type="text"] {
+                            width: 300px;
+                            max-width: calc(100% - 50px);
+                        }
+            main > section > form > nav {
+                position: absolute;
+                padding: 0 15px;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 40px;
+
+                display: flex;
+                justify-content: space-between;
+            }
+                main > section > form > nav > button {
+                    text-decoration: none;
+                    width: 100px;
+                    height: 30px;
+                    background-color: #0366d6;
+                    color: #fff;
+                    text-align: center;
+                    border: none;
+                    cursor: pointer;
+
+                    border-radius: 5px;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                main > section > form > nav > button.finish, main > section > form > nav > button.new {
+                    background-color: #2ea44f;
+                }
+                main > section > form > nav > button:only-child {
+                    margin-left: auto;
+                }
+                main > section > form > nav > button:hover {
+                    transform: scale(1.05);
+                }
+                main > section > form > nav > button:active {
+                    transform: scale(1);
+                }
 
 footer {
     position: fixed;
