@@ -72,3 +72,46 @@ type.querySelector('form').onsubmit = function(e) { e.preventDefault();
     }
 
 };
+
+
+scope.querySelector('form').scope.onfocus = function() {
+
+    let typeSize = type.querySelector('form').type.value.length;
+    let ornamentSize = (' ()!: ').length;
+
+    let maxLength = 50 - typeSize - ornamentSize;
+
+    this.maxLength = maxLength;
+
+    scope.querySelector('form > div > label > small').innerHTML = this.value.length +' / '+ this.maxLength;
+
+};
+scope.querySelector('form').scope.oninput = function() {
+
+    let small = scope.querySelector('form > div > label > small');
+
+    if (this.value.length == 0) {
+
+        small.className = '';
+        small.title = '';
+
+    } else if (this.value.length < (+this.maxLength / 3)) {
+
+        small.className = 'good';
+        small.title = 'Good';
+
+    } else if (this.value.length < (+this.maxLength / 3) * 2) {
+
+        small.className = 'caution';
+        small.title = 'Extensive';
+
+    } else {
+
+        small.className = 'danger';
+        small.title = 'Enormous';
+
+    }
+
+    small.innerHTML = this.value.length +' / '+ this.maxLength;
+
+};
