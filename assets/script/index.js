@@ -208,3 +208,40 @@ summary.querySelector('form').onreset = function() {
     }
 
 };
+
+
+body.querySelector('form').onsubmit = function(e) { e.preventDefault();
+
+    if (e.submitter.classList.contains('finish')) {
+
+        significantChange.querySelector('form').significantChange.parentNode.click();
+        significantChange.querySelector('form').significantChange.checked = false;
+
+        currentTarget = significantChange;
+        significantChange.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    } else {
+
+        currentTarget = footer;
+        footer.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        if (type.querySelector('form').type.value == 'revert')
+            setTimeout(() => footer.querySelector('form button[type="submit"]').click(), 1000);
+
+    }
+
+};
+body.querySelector('form').onreset = function() {
+
+    summary.querySelector('form').summary.parentNode.click();
+
+    currentTarget = summary;
+    summary.scrollIntoView({
+        behavior: 'smooth'
+    });
+
+};
