@@ -116,6 +116,11 @@ main {
                     main > section > form > div > label > a.help:hover {
                         background-color: #96999c80;
                     }
+                    main > section > form > div > label > em {
+                        display: block;
+                        width: 100%;
+                        text-align: center;
+                    }
                     main > section > form > div > label input[type="text"] {
                         margin: 5px 0;
                         padding: 7px 14px;
