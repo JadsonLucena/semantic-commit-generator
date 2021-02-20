@@ -258,3 +258,27 @@ for (let text of footer.querySelectorAll('form > div > label > input[type="text"
     };
 
 }
+footer.querySelector('form').onsubmit = function(e) { e.preventDefault();
+
+    significantChange.querySelector('form').significantChange.parentNode.click();
+    significantChange.querySelector('form').significantChange.checked = false;
+
+    if (this.breakingChange.value.trim() != '')
+        significantChange.querySelector('form').significantChange.checked = true;
+
+    currentTarget = significantChange;
+    significantChange.scrollIntoView({
+        behavior: 'smooth'
+    });
+
+};
+footer.querySelector('form').onreset = function() {
+
+    body.querySelector('form').body.parentNode.click();
+
+    currentTarget = body;
+    body.scrollIntoView({
+        behavior: 'smooth'
+    });
+
+};
