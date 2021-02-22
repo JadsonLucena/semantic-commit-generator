@@ -39,3 +39,9 @@ The commit message must be in the present imperative. This tells someone what th
   │
   └─⫸ Commit Type: build|ci|chore|docs|feat|fix|improvement|perf|refactor|revert|style|test|other
 ```
+
+
+## Reverter
+
+This type of commit differs between conventional commits and contribution to Angular, however, we chose the example of conventional commits because we understand that the model adopted has greater freedom without compromising simplicity.\
+The SHA hash of the commit being rolled back must be reported in Refs.
