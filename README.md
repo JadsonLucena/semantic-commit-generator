@@ -58,3 +58,9 @@ BREAKING CHANGE: <breaking change summary>
 All interruption changes must be mentioned as a BREAKING CHANGE block in the footer.\
 This block should contain a summary of the last change and a detailed description that also includes migration instructions.\
 If BREAKING CHANGE is used, is recommended the use of the exclamation mark "!" in the header as an indicator of significant changes.
+
+
+### References
+
+> [Conventional Commits](https://www.conventionalcommits.org)\
+> [Contributing to Angular](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format)
