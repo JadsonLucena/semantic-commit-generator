@@ -24,3 +24,18 @@ The commit message must be in the present imperative. This tells someone what th
 - The confirmation message header cannot exceed the 50 character limit!
 - If there are any technical details that cannot be expressed in these strict size restrictions, place them on the body.
 - The footer must contain the necessary references and details of changes that cause interruption, if any.
+
+
+## Commit Message Header
+
+```
+<type>[optional scope][optional !]: <short summary>
+  │          │              |              │
+  │          │              |              └─⫸ Summary in present tense. Not capitalized. No period at the end
+  │          │              |
+  |          |              └─⫸ The exclamation mark must be used to draw attention to significant changes
+  |          |
+  │          └─⫸ Describes a section of the code base that provides additional contextual information
+  │
+  └─⫸ Commit Type: build|ci|chore|docs|feat|fix|improvement|perf|refactor|revert|style|test|other
+```
