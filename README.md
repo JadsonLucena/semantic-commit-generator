@@ -45,3 +45,16 @@ The commit message must be in the present imperative. This tells someone what th
 
 This type of commit differs between conventional commits and contribution to Angular, however, we chose the example of conventional commits because we understand that the model adopted has greater freedom without compromising simplicity.\
 The SHA hash of the commit being rolled back must be reported in Refs.
+
+
+## BREAKING CHANGE
+
+```
+BREAKING CHANGE: <breaking change summary>
+<BLANK LINE>
+<breaking change description + migration instructions>
+```
+
+All interruption changes must be mentioned as a BREAKING CHANGE block in the footer.\
+This block should contain a summary of the last change and a detailed description that also includes migration instructions.\
+If BREAKING CHANGE is used, is recommended the use of the exclamation mark "!" in the header as an indicator of significant changes.
