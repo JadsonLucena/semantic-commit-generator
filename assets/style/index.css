@@ -23,7 +23,7 @@ main {
         position: relative;
         float: left;
         width: 50%;
-        height: calc(25% - 50px);
+        height: calc(25% - 60px);
         overflow: hidden;
 
         display: flex;
@@ -56,15 +56,15 @@ main {
         }
             main > section > form > div {
                 position: absolute;
-                padding: 20px;
+                padding: 20px 20px 0 20px;
                 left: 0;
                 top: 50%;
                 width: 100%;
                 height: max-content;
-                max-height: calc(100% - 60px);
+                max-height: calc(100% - 50px);
                 overflow: auto;
 
-                transform: translateY(calc(-50% - 30px));
+                transform: translateY(calc(-50% - 25px));
 
                 display: flex;
                 flex-direction: column;
@@ -72,7 +72,7 @@ main {
             }
                 main > section > form > div > label {
                     display: block;
-                    margin: 0 5px 10px 5px;
+                    margin: 0 5px 20px 5px;
                     float: left;
                     width: 800px;
                     max-width: calc(100% - 10px);
@@ -132,6 +132,7 @@ main {
                         border-radius: 5px;
                     }
                         main > section > form > div > label > span > input[type="text"] {
+                            display: inline-block;
                             width: 300px;
                             max-width: calc(100% - 50px);
                         }
@@ -183,11 +184,11 @@ main {
                         }
             main > section > form > nav {
                 position: absolute;
-                padding: 0 15px;
+                padding: 10px 15px;
                 left: 0;
                 bottom: 0;
                 width: 100%;
-                height: 40px;
+                height: 50px;
 
                 display: flex;
                 justify-content: space-between;
@@ -223,10 +224,11 @@ main {
 
 footer {
     position: fixed;
+    padding: 3px;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: #24292e;
 
     z-index: 3;
