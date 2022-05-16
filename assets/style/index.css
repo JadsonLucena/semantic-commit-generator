@@ -121,7 +121,8 @@ main {
                         width: 100%;
                         text-align: center;
                     }
-                    main > section > form > div > label input[type="text"] {
+                    main > section > form > div > label input[type="text"], main > section > form > div > label > output#header {
+                        display: block;
                         margin: 5px 0;
                         padding: 7px 14px;
                         border: none;
@@ -136,7 +137,8 @@ main {
                             width: 300px;
                             max-width: calc(100% - 50px);
                         }
-                    main > section > form > div > label > textarea {
+                    main > section > form > div > label > textarea, main > section > form > div > label > output#description {
+                        display: block;
                         margin: 5px 0;
                         padding: 7px 14px;
                         border: none;
