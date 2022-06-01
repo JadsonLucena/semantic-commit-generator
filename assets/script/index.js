@@ -343,12 +343,12 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
             footerContent.push('on-behalf-of: '+ footer.querySelector('form').onBehalfOf.value.trim());
 
         if (footer.querySelector('form').breakingChange.value.trim())
-            footerContent.push('BREAKING CHANGE: '+ footer.querySelector('form').breakingChange.value.trim());
+            footerContent.push(footer.querySelector('form').breakingChange.value.trim());
 
         result.querySelector('form').header.value = `${type.querySelector('form').type.value != 'other' ? type.querySelector('form').type.value : type.querySelector('form > div > label[for="other"] > span > input[name="otherType"]').value.trim()}${scope.querySelector('form').scope.value.trim() ? ' ('+ scope.querySelector('form').scope.value.trim() +')' : ''}${this.significantChange.checked ? '!' : ''}: ${summary.querySelector('form').summary.value.trim()}`;
-        result.querySelector('form').description.innerHTML = `${body.querySelector('form').body.value.trim() ? body.querySelector('form').body.value.trim() : ''}${body.querySelector('form').body.value.trim() && footerContent.length ? '\n\n' : ''}${footerContent.length ? footerContent.join('\n') : ''}`;
-        
-        result.querySelector('form > div > fieldset > code > span.value').innerHTML = `${result.querySelector('form').header.value}${result.querySelector('form').description.value.trim() ? (!body.querySelector('form').body.value.trim() && (footer.querySelector('form').coAuthoredBy.value.trim() || footer.querySelector('form').onBehalfOf.value.trim()) ? '<br><br><br>' : '<br><br>') + result.querySelector('form').description.value.trim().replace(/</g, '&lt;').replace(/>/g, '&gt;').split('\n').join('<br>') : ''}`;
+        result.querySelector('form').description.innerHTML = `${body.querySelector('form').body.value.trim() ? body.querySelector('form').body.value.trim() : ''}${body.querySelector('form').body.value.trim() && footerContent.length ? '\n\n' : ''}${footerContent.length ? footerContent.join('\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
+
+        result.querySelector('form > div > fieldset > code > span.value').innerHTML = `${result.querySelector('form').header.value.trim()}${result.querySelector('form').description.innerHTML.trim() ? (!body.querySelector('form').body.value.trim() && (footer.querySelector('form').coAuthoredBy.value.trim() || footer.querySelector('form').onBehalfOf.value.trim()) ? '\n\n\n' : '\n\n') + result.querySelector('form').description.innerHTML.replaceAll('<br>', '\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
 
         currentTarget = result;
         result.scrollIntoView({
