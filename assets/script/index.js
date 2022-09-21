@@ -17,6 +17,37 @@ window.onresize = () => {
 };
 
 
+function waitTransition(section) {
+
+    return new Promise((resolve, reject) => {
+
+        try {
+
+            let loop = setInterval(() => {
+
+                if (
+                    Math.round(document.body.scrollLeft) == section.offsetLeft
+                    && Math.round(document.body.scrollTop) == section.offsetTop
+                ) {
+
+                    clearInterval(loop);
+                    resolve();
+
+                }
+
+            }, 1);
+
+        } catch(err) {
+
+            reject(err);
+
+        }
+
+    })
+
+}
+
+
 for (let checkBox of type.querySelectorAll('form > div > label > input')) {
 
     checkBox.onchange = function() {
@@ -44,7 +75,6 @@ type.querySelector('form').onsubmit = function(e) { e.preventDefault();
     if (this.type.value == 'revert') {
 
         summary.querySelector('form > nav > button.finish').style.display = 'none';
-        summary.querySelector('form').summary.parentNode.click();
 
         body.querySelector('form > nav > button.finish').style.display = 'none';
 
@@ -58,10 +88,10 @@ type.querySelector('form').onsubmit = function(e) { e.preventDefault();
             behavior: 'smooth'
         });
 
+        waitTransition(summary).then(() => summary.querySelector('form').summary.focus());
+
     } else {
 
-        scope.querySelector('form').scope.parentNode.click();
-        
         summary.querySelector('form > nav > button.finish').style.display = '';
 
         body.querySelector('form > nav > button.finish').style.display = '';
@@ -75,6 +105,8 @@ type.querySelector('form').onsubmit = function(e) { e.preventDefault();
         scope.scrollIntoView({
             behavior: 'smooth'
         });
+
+        waitTransition(scope).then(() => scope.querySelector('form').scope.focus());
 
     }
 
@@ -124,12 +156,12 @@ scope.querySelector('form').scope.oninput = function() {
 };
 scope.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
-    summary.querySelector('form').summary.parentNode.click();
-
     currentTarget = summary;
     summary.scrollIntoView({
         behavior: 'smooth'
     });
+
+    waitTransition(summary).then(() => summary.querySelector('form').summary.focus());
 
 };
 scope.querySelector('form').onreset = function() {
@@ -138,6 +170,8 @@ scope.querySelector('form').onreset = function() {
     type.scrollIntoView({
         behavior: 'smooth'
     });
+
+    waitTransition(type).then(() => type.querySelector('input[checked]').focus());
 
 };
 
@@ -174,7 +208,6 @@ summary.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
     if (e.submitter.classList.contains('finish')) {
 
-        significantChange.querySelector('form').significantChange.parentNode.click();
         significantChange.querySelector('form').significantChange.checked = false;
 
         currentTarget = significantChange;
@@ -182,14 +215,16 @@ summary.querySelector('form').onsubmit = function(e) { e.preventDefault();
             behavior: 'smooth'
         });
 
-    } else {
+        waitTransition(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
 
-        body.querySelector('form').body.parentNode.click();
+    } else {
 
         currentTarget = body;
         body.scrollIntoView({
             behavior: 'smooth'
         });
+
+        waitTransition(body).then(() => body.querySelector('form').body.focus());
 
     }
 
@@ -203,14 +238,16 @@ summary.querySelector('form').onreset = function() {
             behavior: 'smooth'
         });
 
-    } else {
+        waitTransition(type).then(() => type.querySelector('input[checked]').focus());
 
-        scope.querySelector('form').scope.parentNode.click();
+    } else {
 
         currentTarget = scope;
         scope.scrollIntoView({
             behavior: 'smooth'
         });
+
+        waitTransition(scope).then(() => scope.querySelector('form').scope.focus());
 
     }
 
@@ -221,13 +258,14 @@ body.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
     if (e.submitter.classList.contains('finish')) {
 
-        significantChange.querySelector('form').significantChange.parentNode.click();
         significantChange.querySelector('form').significantChange.checked = false;
 
         currentTarget = significantChange;
         significantChange.scrollIntoView({
             behavior: 'smooth'
         });
+
+        waitTransition(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
 
     } else {
 
@@ -236,20 +274,27 @@ body.querySelector('form').onsubmit = function(e) { e.preventDefault();
             behavior: 'smooth'
         });
 
-        if (type.querySelector('form').type.value == 'revert')
-            setTimeout(() => footer.querySelector('form button[type="submit"]').click(), 1000);
+        if (type.querySelector('form').type.value == 'revert') {
+
+            waitTransition(footer).then(() => footer.querySelector('form').refs.focus());
+
+        } else {
+
+            waitTransition(footer);
+
+        }
 
     }
 
 };
 body.querySelector('form').onreset = function() {
 
-    summary.querySelector('form').summary.parentNode.click();
-
     currentTarget = summary;
     summary.scrollIntoView({
         behavior: 'smooth'
     });
+
+    waitTransition(summary).then(() => summary.querySelector('form').summary.focus());
 
 };
 
@@ -267,7 +312,6 @@ for (let text of footer.querySelectorAll('form > div > label > input[type="text"
 }
 footer.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
-    significantChange.querySelector('form').significantChange.parentNode.click();
     significantChange.querySelector('form').significantChange.checked = false;
 
     if (this.breakingChange.value.trim() != '')
@@ -278,15 +322,17 @@ footer.querySelector('form').onsubmit = function(e) { e.preventDefault();
         behavior: 'smooth'
     });
 
+    waitTransition(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
+
 };
 footer.querySelector('form').onreset = function() {
-
-    body.querySelector('form').body.parentNode.click();
 
     currentTarget = body;
     body.scrollIntoView({
         behavior: 'smooth'
     });
+
+    waitTransition(body).then(() => body.querySelector('form').body.focus());
 
 };
 
@@ -300,7 +346,7 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
             behavior: 'smooth'
         });
 
-        setTimeout(() => type.querySelector('form button[type="submit"]').click(), 1000);
+        waitTransition(type).then(() => type.querySelector('form button[type="submit"]').click());
 
     } else if (summary.querySelector('form').summary.value.trim() == '') {
 
@@ -309,7 +355,7 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
             behavior: 'smooth'
         });
 
-        setTimeout(() => summary.querySelector('form button[type="submit"]').click(), 1000);
+        waitTransition(summary).then(() => summary.querySelector('form button[type="submit"]').click());
 
     } if (type.querySelector('form').type.value == 'revert' && footer.querySelector('form').refs.value.trim() == '') {
 
@@ -318,7 +364,7 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
             behavior: 'smooth'
         });
 
-        setTimeout(() => footer.querySelector('form button[type="submit"]').click(), 1000);
+        waitTransition(footer).then(() => footer.querySelector('form button[type="submit"]').click());
 
     } else {
 
@@ -355,6 +401,8 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
             behavior: 'smooth'
         });
 
+        waitTransition(result);
+
     }
 
 };
@@ -364,6 +412,16 @@ significantChange.querySelector('form').onreset = function() {
     footer.scrollIntoView({
         behavior: 'smooth'
     });
+
+    if (type.querySelector('form').type.value == 'revert') {
+
+        waitTransition(footer).then(() => footer.querySelector('form').refs.focus());
+
+    } else {
+
+        waitTransition(footer);
+
+    }
 
 };
 
@@ -385,6 +443,8 @@ result.querySelector('form').onsubmit = function(e) { e.preventDefault();
             behavior: 'smooth'
         });
 
+        waitTransition(type).then(() => type.querySelector('input[checked]').focus());
+
     }
 
 };
@@ -392,12 +452,13 @@ result.querySelector('form').onreset = function() {
 
     let checked = significantChange.querySelector('form').significantChange.checked;
 
-    significantChange.querySelector('form').significantChange.parentNode.click();
     significantChange.querySelector('form').significantChange.checked = checked;
 
     currentTarget = significantChange;
     significantChange.scrollIntoView({
         behavior: 'smooth'
     });
+
+    waitTransition(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
 
 };
