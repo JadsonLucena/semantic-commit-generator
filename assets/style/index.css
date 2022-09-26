@@ -206,6 +206,7 @@ main {
                     height: 30px;
                     background-color: #0366d6;
                     color: #fff;
+                    text-shadow: 0 0 2px #000;
                     text-align: center;
                     border: none;
                     cursor: pointer;
