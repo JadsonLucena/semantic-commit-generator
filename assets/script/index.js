@@ -5,6 +5,7 @@ var body = document.querySelector('body > main > section#body');
 var footer = document.querySelector('body > main > section#footer');
 var significantChange = document.querySelector('body > main > section#significantChange');
 var result = document.querySelector('body > main > section#result');
+let sections = Array.from(document.querySelectorAll('main > section'));
 
 
 var currentTarget = type;
@@ -23,6 +24,8 @@ function waitTransition(section) {
 
         try {
 
+            sections.forEach(element => element.classList.add('visible'));
+
             let loop = setInterval(() => {
 
                 if (
@@ -31,6 +34,9 @@ function waitTransition(section) {
                 ) {
 
                     clearInterval(loop);
+
+                    sections.forEach(element => (element.id != section.id) && element.classList.remove('visible'));
+
                     resolve();
 
                 }
