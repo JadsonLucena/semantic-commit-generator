@@ -7,6 +7,9 @@ var significantChange = document.querySelector('body > main > section#significan
 var result = document.querySelector('body > main > section#result');
 
 
+var currentTarget = type;
+
+
 for (let checkBox of type.querySelectorAll('form > div > label > input')) {
 
     checkBox.onchange = function() {
@@ -29,3 +32,43 @@ for (let checkBox of type.querySelectorAll('form > div > label > input')) {
     };
 
 }
+type.querySelector('form').onsubmit = function(e) { e.preventDefault();
+
+    if (this.type.value == 'revert') {
+
+        summary.querySelector('form > nav > button.finish').style.display = 'none';
+        summary.querySelector('form').summary.parentNode.click();
+
+        body.querySelector('form > nav > button.finish').style.display = 'none';
+
+        footer.querySelector('form > div > label[for="refs"] > a').href = 'https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls#commit-shas';
+        footer.querySelector('form').refs.pattern = '^((,\\s*)?([A-Za-z0-9][+A-Za-z0-9._-]*(\\/.+)?@)?([A-Fa-f0-9]{7}|[A-Fa-f0-9]{40}))*$';
+        footer.querySelector('form').refs.placeholder = 'a5c3785, jlord@a5c3785, jlord/sheetsee.js@a5c3785, ...';
+        footer.querySelector('form').refs.required = true;
+
+        currentTarget = summary;
+        summary.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    } else {
+
+        scope.querySelector('form').scope.parentNode.click();
+        
+        summary.querySelector('form > nav > button.finish').style.display = '';
+
+        body.querySelector('form > nav > button.finish').style.display = '';
+
+        footer.querySelector('form > div > label[for="refs"] > a').href = 'https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls';
+        footer.querySelector('form').refs.pattern = '^((,\\s*)?(([A-Za-z0-9][+A-Za-z0-9._-]*\\/[A-Za-z0-9._-]+)?#\\d+|([A-Za-z0-9][+A-Za-z0-9._-]*(\\/[A-Za-z0-9._-]+)?@)?([A-Fa-f0-9]{7}|[A-Fa-f0-9]{40})))*$';
+        footer.querySelector('form').refs.placeholder = '#26, a5c3785, github/linguist#4039, jlord@a5c3785, jlord/sheetsee.js#26, jlord/sheetsee.js@a5c3785, ...';
+        footer.querySelector('form').refs.required = false;
+
+        currentTarget = scope;
+        scope.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+    }
+
+};
