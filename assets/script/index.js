@@ -361,19 +361,19 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
     let footerContent = [];
 
     if (footer.querySelector('form').closes.value.trim())
-        footerContent.push(`Closes: ${footer.querySelector('form').closes.value.trim().replace(/,/g, ', closes:')}`);
+        footerContent.push(`Closes: ${footer.querySelector('form').closes.value.split(',').map(e => e.trim()).filter(e => e).join(',').replaceAll(',', ', closes: ')}`);
 
     if (footer.querySelector('form').fixes.value.trim())
-        footerContent.push(`Fixes: ${footer.querySelector('form').fixes.value.trim().replace(/,/g, ', fixes:')}`);
+        footerContent.push(`Fixes: ${footer.querySelector('form').fixes.value.split(',').map(e => e.trim()).filter(e => e).join(',').replaceAll(',', ', fixes: ')}`);
 
     if (footer.querySelector('form').resolves.value.trim())
-        footerContent.push(`Resolves: ${footer.querySelector('form').resolves.value.trim().replace(/,/g, ', resolves:')}`);
+        footerContent.push(`Resolves: ${footer.querySelector('form').resolves.value.split(',').map(e => e.trim()).filter(e => e).join(',').replaceAll(',', ', resolves: ')}`);
 
     if (footer.querySelector('form').refs.value.trim())
-        footerContent.push(`Refs: ${footer.querySelector('form').refs.value.trim()}`);
+        footerContent.push(`Refs: ${footer.querySelector('form').refs.value.split(',').map(e => e.trim()).filter(e => e).join(', ')}`);
 
     if (footer.querySelector('form').coAuthoredBy.value.trim())
-        footer.querySelector('form').coAuthoredBy.value.trim().split(', ').forEach(e => footerContent.push('Co-authored-by: '+ e))
+        footer.querySelector('form').coAuthoredBy.value.split(',').map(e => e.trim()).filter(e => e).forEach(e => footerContent.push('Co-authored-by: '+ e))
 
     if (footer.querySelector('form').onBehalfOf.value.trim())
         footerContent.push('on-behalf-of: '+ footer.querySelector('form').onBehalfOf.value.trim());
