@@ -223,10 +223,11 @@
                         on-behalf-of: <a href="https://docs.github.com/en/github/committing-changes-to-your-project/creating-a-commit-on-behalf-of-an-organization" class="help" target="_blank" title="Help">?</a><br>
                         <input type="text" name="onBehalfOf" id="onBehalfOf" pattern="^@[A-Za-z0-9][+A-Za-z0-9._-]*\s<[A-Za-z0-9][+A-Za-z0-9._-]*@[^.]+(\.[^.>]+)+>$" placeholder="@org <name@organization.com>">
                     </label>
-                    <label for="breakingChange">
-                        BREAKING CHANGE: <a href="https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-footer" class="help" target="_blank" title="Help">?</a><br>
-                        <textarea name="breakingChange" id="breakingChange" minlength="20" placeholder="<breaking change summary>&#10;<BLANK LINE>&#10;<breaking change description + migration instructions>"></textarea>
-                    </label>
+                    <fieldset>
+                        <legend>BREAKING CHANGE <a href="https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-message-footer" class="help" target="_blank" title="Help">?</a></legend>
+                        <input type="text" name="breakingChangeSummary" id="breakingChangeSummary" placeholder="Breaking change summary"><br>
+                        <textarea name="breakingChangeDescription" id="breakingChangeDescription" minlength="20" placeholder="breaking change description + migration instructions"></textarea>
+                    </fieldset>
 
                 </div>
 

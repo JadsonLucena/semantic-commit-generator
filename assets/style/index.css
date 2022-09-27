@@ -75,13 +75,21 @@ main {
                 flex-direction: column;
                 align-items: center;
             }
-                main > section > form > div > label {
+                main > section > form > div > :is(label, fieldset) {
                     display: block;
                     margin: 0 5px 20px 5px;
                     float: left;
                     width: 800px;
                     max-width: calc(100% - 10px);
                 }
+                main > section#footer > form > div > fieldset {
+                    padding: 20px;
+                    border-radius: 5px;
+                }
+                    main > section > form > div > fieldset > legend {
+                        user-select: none;
+                        padding: 10px;
+                    }
                     main > section > form > div > label > small {
                         float: right;
                         font-size: 14px;
@@ -101,7 +109,7 @@ main {
                             font-size: 8px;
                             font-weight: normal;
                         }
-                    main > section > form > div > label > a.help {
+                    main > section > form > div > :is(label, fieldset) a.help {
                         text-decoration: none;
                         width: 16px;
                         height: 16px;
@@ -118,7 +126,7 @@ main {
                         justify-content: center;
                         align-items: center;
                     }
-                    main > section > form > div > label > a.help:hover {
+                    main > section > form > div > :is(label, fieldset) a.help:hover {
                         background-color: #96999c80;
                     }
                     main > section > form > div > label > em {
@@ -126,7 +134,7 @@ main {
                         width: 100%;
                         text-align: center;
                     }
-                    main > section > form > div > label input[type="text"], main > section > form > div > label > output#header {
+                    main > section > form > div > :is(label, fieldset) input[type="text"], main > section > form > div > label > output#header {
                         display: block;
                         margin: 5px 0;
                         padding: 7px 14px;
@@ -142,7 +150,7 @@ main {
                             width: 300px;
                             max-width: calc(100% - 50px);
                         }
-                    main > section > form > div > label > textarea, main > section > form > div > label > output#description {
+                    main > section > form > div > :is(label, fieldset) textarea, main > section > form > div > label > output#description {
                         display: block;
                         margin: 5px 0;
                         padding: 7px 14px;
@@ -168,8 +176,6 @@ main {
                     text-align: center;
                 }
                     main > section#result > form > div > fieldset > legend {
-                        user-select: none;
-                        padding: 10px;
                         font-weight: bold;
                     }
                     main > section#result > form > div > fieldset > code {

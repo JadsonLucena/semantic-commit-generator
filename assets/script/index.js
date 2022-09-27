@@ -227,8 +227,6 @@ summary.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
     if (e.submitter.classList.contains('finish')) {
 
-        significantChange.querySelector('form').significantChange.checked = false;
-
         currentTarget = significantChange;
         significantChange.scrollIntoView({
             behavior: 'smooth'
@@ -276,8 +274,6 @@ summary.querySelector('form').onreset = function() {
 body.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
     if (e.submitter.classList.contains('finish')) {
-
-        significantChange.querySelector('form').significantChange.checked = false;
 
         currentTarget = significantChange;
         significantChange.scrollIntoView({
@@ -329,12 +325,12 @@ for (let text of footer.querySelectorAll('form > div > label > input[type="text"
     };
 
 }
+
+footer.querySelector('form').breakingChangeDescription.oninput = e => footer.querySelector('form').breakingChangeSummary.required = Boolean(e.target.value.trim());
+
 footer.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
-    significantChange.querySelector('form').significantChange.checked = false;
-
-    if (this.breakingChange.value.trim() != '')
-        significantChange.querySelector('form').significantChange.checked = true;
+    significantChange.querySelector('form').significantChange.checked = Boolean(this.breakingChangeSummary.value.trim());
 
     currentTarget = significantChange;
     significantChange.scrollIntoView({
@@ -345,6 +341,8 @@ footer.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
 };
 footer.querySelector('form').onreset = function() {
+
+    footer.querySelector('form').breakingChangeSummary.required = false;
 
     currentTarget = body;
     body.scrollIntoView({
@@ -378,8 +376,11 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
     if (footer.querySelector('form').onBehalfOf.value.trim())
         footerContent.push('on-behalf-of: '+ footer.querySelector('form').onBehalfOf.value.trim());
 
-    if (footer.querySelector('form').breakingChange.value.trim())
-        footerContent.push(footer.querySelector('form').breakingChange.value.trim());
+    if (footer.querySelector('form').breakingChangeSummary.value.trim())
+        footerContent.push('BREAKING CHANGE: '+ footer.querySelector('form').breakingChangeSummary.value.trim());
+
+    if (footer.querySelector('form').breakingChangeDescription.value.trim())
+        footerContent.push('\n'+ footer.querySelector('form').breakingChangeDescription.value.trim());
 
     result.querySelector('form').header.value = `${type.querySelector('form').type.value != 'other' ? type.querySelector('form').type.value : type.querySelector('form > div > label[for="other"] > span > input[name="otherType"]').value.trim()}${scope.querySelector('form').scope.value.trim() ? ' ('+ scope.querySelector('form').scope.value.trim() +')' : ''}${this.significantChange.checked ? '!' : ''}: ${summary.querySelector('form').summary.value.trim()}`;
     result.querySelector('form').description.innerHTML = `${body.querySelector('form').body.value.trim() ? body.querySelector('form').body.value.trim() : ''}${body.querySelector('form').body.value.trim() && footerContent.length ? '\n\n' : ''}${footerContent.length ? footerContent.join('\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
@@ -394,7 +395,9 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
     waitTransition(result);
 
 };
-significantChange.querySelector('form').onreset = function() {
+significantChange.querySelector('form').onreset = function(e) {
+
+    significantChange.querySelector('form').significantChange.checked = false;
 
     currentTarget = footer;
     footer.scrollIntoView({
@@ -437,10 +440,6 @@ result.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
 };
 result.querySelector('form').onreset = function() {
-
-    let checked = significantChange.querySelector('form').significantChange.checked;
-
-    significantChange.querySelector('form').significantChange.checked = checked;
 
     currentTarget = significantChange;
     significantChange.scrollIntoView({
