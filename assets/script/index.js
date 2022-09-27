@@ -54,6 +54,19 @@ function waitTransition(section) {
 }
 
 
+if (location.hash) {
+
+    let section = document.querySelector(`body > main > section${location.hash}`);
+
+    if (section) {
+
+        waitTransition(section);
+
+    }
+
+}
+
+
 for (let checkBox of type.querySelectorAll('form > div > label > input')) {
 
     checkBox.onchange = function() {
@@ -345,71 +358,40 @@ footer.querySelector('form').onreset = function() {
 
 significantChange.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
-    if (type.querySelector('form').type.value == 'other' && type.querySelector('form > div > label[for="other"] > span > input').value.trim() == '') {
+    let footerContent = [];
 
-        currentTarget = type;
-        type.scrollIntoView({
-            behavior: 'smooth'
-        });
+    if (footer.querySelector('form').closes.value.trim())
+        footerContent.push(`Closes: ${footer.querySelector('form').closes.value.trim().replace(/,/g, ', closes:')}`);
 
-        waitTransition(type).then(() => type.querySelector('form button[type="submit"]').click());
+    if (footer.querySelector('form').fixes.value.trim())
+        footerContent.push(`Fixes: ${footer.querySelector('form').fixes.value.trim().replace(/,/g, ', fixes:')}`);
 
-    } else if (summary.querySelector('form').summary.value.trim() == '') {
+    if (footer.querySelector('form').resolves.value.trim())
+        footerContent.push(`Resolves: ${footer.querySelector('form').resolves.value.trim().replace(/,/g, ', resolves:')}`);
 
-        currentTarget = summary;
-        summary.scrollIntoView({
-            behavior: 'smooth'
-        });
+    if (footer.querySelector('form').refs.value.trim())
+        footerContent.push(`Refs: ${footer.querySelector('form').refs.value.trim()}`);
 
-        waitTransition(summary).then(() => summary.querySelector('form button[type="submit"]').click());
+    if (footer.querySelector('form').coAuthoredBy.value.trim())
+        footer.querySelector('form').coAuthoredBy.value.trim().split(', ').forEach(e => footerContent.push('Co-authored-by: '+ e))
 
-    } if (type.querySelector('form').type.value == 'revert' && footer.querySelector('form').refs.value.trim() == '') {
+    if (footer.querySelector('form').onBehalfOf.value.trim())
+        footerContent.push('on-behalf-of: '+ footer.querySelector('form').onBehalfOf.value.trim());
 
-        currentTarget = footer;
-        footer.scrollIntoView({
-            behavior: 'smooth'
-        });
+    if (footer.querySelector('form').breakingChange.value.trim())
+        footerContent.push(footer.querySelector('form').breakingChange.value.trim());
 
-        waitTransition(footer).then(() => footer.querySelector('form button[type="submit"]').click());
+    result.querySelector('form').header.value = `${type.querySelector('form').type.value != 'other' ? type.querySelector('form').type.value : type.querySelector('form > div > label[for="other"] > span > input[name="otherType"]').value.trim()}${scope.querySelector('form').scope.value.trim() ? ' ('+ scope.querySelector('form').scope.value.trim() +')' : ''}${this.significantChange.checked ? '!' : ''}: ${summary.querySelector('form').summary.value.trim()}`;
+    result.querySelector('form').description.innerHTML = `${body.querySelector('form').body.value.trim() ? body.querySelector('form').body.value.trim() : ''}${body.querySelector('form').body.value.trim() && footerContent.length ? '\n\n' : ''}${footerContent.length ? footerContent.join('\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
 
-    } else {
+    result.querySelector('form > div > fieldset > code > span.value').innerHTML = `${result.querySelector('form').header.value.trim()}${result.querySelector('form').description.innerHTML.trim() ? (!body.querySelector('form').body.value.trim() && (footer.querySelector('form').coAuthoredBy.value.trim() || footer.querySelector('form').onBehalfOf.value.trim()) ? '\n\n\n' : '\n\n') + result.querySelector('form').description.innerHTML.replaceAll('<br>', '\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
 
-        let footerContent = [];
+    currentTarget = result;
+    result.scrollIntoView({
+        behavior: 'smooth'
+    });
 
-        if (footer.querySelector('form').closes.value.trim())
-            footerContent.push(`Closes: ${footer.querySelector('form').closes.value.trim().replace(/,/g, ', closes:')}`);
-
-        if (footer.querySelector('form').fixes.value.trim())
-            footerContent.push(`Fixes: ${footer.querySelector('form').fixes.value.trim().replace(/,/g, ', fixes:')}`);
-
-        if (footer.querySelector('form').resolves.value.trim())
-            footerContent.push(`Resolves: ${footer.querySelector('form').resolves.value.trim().replace(/,/g, ', resolves:')}`);
-
-        if (footer.querySelector('form').refs.value.trim())
-            footerContent.push(`Refs: ${footer.querySelector('form').refs.value.trim()}`);
-
-        if (footer.querySelector('form').coAuthoredBy.value.trim())
-            footer.querySelector('form').coAuthoredBy.value.trim().split(', ').forEach(e => footerContent.push('Co-authored-by: '+ e))
-
-        if (footer.querySelector('form').onBehalfOf.value.trim())
-            footerContent.push('on-behalf-of: '+ footer.querySelector('form').onBehalfOf.value.trim());
-
-        if (footer.querySelector('form').breakingChange.value.trim())
-            footerContent.push(footer.querySelector('form').breakingChange.value.trim());
-
-        result.querySelector('form').header.value = `${type.querySelector('form').type.value != 'other' ? type.querySelector('form').type.value : type.querySelector('form > div > label[for="other"] > span > input[name="otherType"]').value.trim()}${scope.querySelector('form').scope.value.trim() ? ' ('+ scope.querySelector('form').scope.value.trim() +')' : ''}${this.significantChange.checked ? '!' : ''}: ${summary.querySelector('form').summary.value.trim()}`;
-        result.querySelector('form').description.innerHTML = `${body.querySelector('form').body.value.trim() ? body.querySelector('form').body.value.trim() : ''}${body.querySelector('form').body.value.trim() && footerContent.length ? '\n\n' : ''}${footerContent.length ? footerContent.join('\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
-
-        result.querySelector('form > div > fieldset > code > span.value').innerHTML = `${result.querySelector('form').header.value.trim()}${result.querySelector('form').description.innerHTML.trim() ? (!body.querySelector('form').body.value.trim() && (footer.querySelector('form').coAuthoredBy.value.trim() || footer.querySelector('form').onBehalfOf.value.trim()) ? '\n\n\n' : '\n\n') + result.querySelector('form').description.innerHTML.replaceAll('<br>', '\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
-
-        currentTarget = result;
-        result.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(result);
-
-    }
+    waitTransition(result);
 
 };
 significantChange.querySelector('form').onreset = function() {
