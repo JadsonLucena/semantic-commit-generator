@@ -1,16 +1,16 @@
 const CACHE_NAME = 'v1.0.0';
 
 const FILES_TO_CACHE = [
-	'./assets/img/apple-touch-icon-192x192.webp',
-	'./assets/img/favicon-32x32.png',
-	'./assets/img/favicon-48x48.png',
-	'./assets/img/favicon-96x96.png',
-	'./assets/img/favicon-144x144.png',
-	'./assets/img/favicon-512x512.png',
-	'./assets/img/favicon.ico',
-	'./assets/img/favicon.svg',
-	'./assets/script/index.js',
-	'./assets/style/index.css',
+	'./images/apple-touch-icon-192x192.webp',
+	'./images/favicon-32x32.png',
+	'./images/favicon-48x48.png',
+	'./images/favicon-96x96.png',
+	'./images/favicon-144x144.png',
+	'./images/favicon-512x512.png',
+	'./images/favicon.ico',
+	'./images/favicon.svg',
+	'./scripts/index.js',
+	'./styles/index.css',
 	'./index.html',
 	'./'
 ];
