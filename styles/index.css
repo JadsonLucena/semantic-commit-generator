@@ -47,6 +47,15 @@ main {
 
             z-index: 2;
         }
+            main > section > details h2 {
+                display: inline;
+                font-size: 16px;
+            }
+            main > section > details h3 {
+                display: inline;
+                font-size: 14px;
+                font-weight: normal;
+            }
             main > section > details > summary {
                 cursor: pointer;
             }
@@ -253,15 +262,33 @@ footer {
 
     z-index: 3;
 }
-    footer > h3 {
-        display: block;
+    footer > header {
         width: 100%;
         height: 40%;
         text-align: center;
-        font-weight: normal;
-        color: #fff;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
     }
-    footer > div {
+        footer > header > a {
+            display: inline-block;
+            width: max-content;
+            height: max-content;
+            text-decoration: none;
+        }
+            footer > header > a > h1 {
+                display: inline;
+                font-size: 18px;
+                color: #fff;
+                white-space: nowrap;
+            }
+            footer > header > a > img {
+                float: left;
+                width: 100%;
+            }
+    footer > aside {
         width: 100%;
         height: 60%;
         text-align: center;
@@ -271,7 +298,7 @@ footer {
         justify-content: space-between;
         align-items: center;
     }
-        footer > div > a {
+        footer > aside > a {
             padding: 0 5px 0 10px;
             color: #fff;
         }

@@ -36,10 +36,10 @@
         <section id="type" class="visible">
 
             <details>
-                <summary>Type</summary>
+                <summary><h2>Type</h2></summary>
                 <ul>
-                    <li>Must communicate the intention of the change</li>
-                    <li>The essentials are feat and fix</li>
+                    <li><h3>Must communicate the intention of the change</h3></li>
+                    <li><h3>The essentials are feat and fix</h3></li>
                 </ul>
             </details>
 
@@ -99,10 +99,10 @@
         <section id="scope">
 
             <details>
-                <summary>Scope</summary>
+                <summary><h2>Scope</h2></summary>
                 <ul>
-                    <li>It must be something that intuitively specifies the location of the change</li>
-                    <li>It should aim to provide additional contextual information</li>
+                    <li><h3>It must be something that intuitively specifies the location of the change</h3></li>
+                    <li><h3>It should aim to provide additional contextual information</h3></li>
                 </ul>
             </details>
 
@@ -128,11 +128,12 @@
         <section id="summary">
 
             <details>
-                <summary>Summary</summary>
+                <summary><h2>Summary</h2></summary>
                 <ul>
-                    <li>Use the imperative, present: "change" not "changed" nor "changes"</li>
-                    <li>Don't capitalize the first letter</li>
-                    <li>No dot (.) at the end</li>
+                    <li><h3>Use the imperative, present: "change" not "changed" nor "changes"</h3></li>
+                    <li><h3>Don't capitalize the first letter</h3></li>
+                    <li><h3>No dot (.) at the end</h3></li>
+                    <li><h3>Commits must be atomic!</h3></li>
                 </ul>
             </details>
 
@@ -159,11 +160,11 @@
         <section id="body">
 
             <details>
-                <summary>Body</summary>
+                <summary><h2>Body</h2></summary>
                 <ul>
-                    <li>Use the imperative, present: "change" not "changed" nor "changes"</li>
-                    <li>Describe and justify in detail the change</li>
-                    <li>It should include the motivation and, if possible, a comparison with previous behavior</li>
+                    <li><h3>Use the imperative, present: "change" not "changed" nor "changes"</h3></li>
+                    <li><h3>Describe and justify in detail the change</h3></li>
+                    <li><h3>It should include the motivation and, if possible, a comparison with previous behavior</h3></li>
                 </ul>
             </details>
 
@@ -189,9 +190,9 @@
         <section id="footer">
 
             <details>
-                <summary>Footer</summary>
+                <summary><h2>Footer</h2></summary>
                 <ul>
-                    <li>It must contain all necessary references and relevant information about changes that break compatibility, if any</li>
+                    <li><h3>It must contain all necessary references and relevant information about changes that break compatibility, if any</h3></li>
                 </ul>
             </details>
 
@@ -242,9 +243,9 @@
         <section id="significantChange">
 
             <details>
-                <summary>Significant Change</summary>
+                <summary><h2>Significant Change</h2></summary>
                 <ul>
-                    <li>It is possible to inform if the commit makes a significant change or breaks the compatibility, this inserts the identifier "!" after type/scope</li>
+                    <li><h3>It is possible to inform if the commit makes a significant change or breaks the compatibility, this inserts the identifier "!" after type/scope</h3></li>
                 </ul>
             </details>
 
@@ -271,8 +272,10 @@
         <section id="result">
 
             <details>
-                <summary>Result</summary>
-                <p>Thank you for using our system</p>
+                <summary><h2>Result</h2></summary>
+                <ul>
+                    <li><h3>Commits must be atomic!</h3></li>
+                </ul>
             </details>
 
             <form>
@@ -308,12 +311,14 @@
 
     <footer>
 
-        <h3>commits must be atomic!</h3>
+        <header>
+            <a href="https://github.com/JadsonLucena/semantic-commit-generator" target="_blank"><h1>Semantic Commit Generator</h1></a>
+        </header>
 
-        <div>
+        <aside>
             <a href="https://www.conventionalcommits.org" target="_blank">Conventional Commits</a>
             <a href="https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format" target="_blank">Contributing to Angular</a>
-        </div>
+        </aside>
 
     </footer>
 
