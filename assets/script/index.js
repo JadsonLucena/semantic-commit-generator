@@ -8,21 +8,15 @@ var result = document.querySelector('body > main > section#result');
 let sections = Array.from(document.querySelectorAll('main > section'));
 
 
-var currentTarget = type;
-window.onresize = () => {
-
-    currentTarget.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-};
-
-
-function waitTransition(section) {
+function scrollIntoView(section) {
 
     return new Promise((resolve, reject) => {
 
         try {
+
+            section.scrollIntoView({
+                behavior: 'smooth'
+            });
 
             sections.forEach(element => element.classList.add('visible'));
 
@@ -60,7 +54,7 @@ if (location.hash) {
 
     if (section) {
 
-        waitTransition(section);
+        scrollIntoView(section);
 
     }
 
@@ -102,12 +96,7 @@ type.querySelector('form').onsubmit = function(e) { e.preventDefault();
         footer.querySelector('form').refs.placeholder = 'a5c3785, jlord@a5c3785, jlord/sheetsee.js@a5c3785, ...';
         footer.querySelector('form').refs.required = true;
 
-        currentTarget = summary;
-        summary.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(summary).then(() => summary.querySelector('form').summary.focus());
+        scrollIntoView(summary).then(() => summary.querySelector('form').summary.focus());
 
     } else {
 
@@ -120,12 +109,7 @@ type.querySelector('form').onsubmit = function(e) { e.preventDefault();
         footer.querySelector('form').refs.placeholder = '#26, a5c3785, github/linguist#4039, jlord@a5c3785, jlord/sheetsee.js#26, jlord/sheetsee.js@a5c3785, ...';
         footer.querySelector('form').refs.required = false;
 
-        currentTarget = scope;
-        scope.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(scope).then(() => scope.querySelector('form').scope.focus());
+        scrollIntoView(scope).then(() => scope.querySelector('form').scope.focus());
 
     }
 
@@ -175,24 +159,10 @@ scope.querySelector('form').scope.oninput = function() {
 };
 scope.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
-    currentTarget = summary;
-    summary.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-    waitTransition(summary).then(() => summary.querySelector('form').summary.focus());
+    scrollIntoView(summary).then(() => summary.querySelector('form').summary.focus());
 
 };
-scope.querySelector('form').onreset = function() {
-
-    currentTarget = type;
-    type.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-    waitTransition(type).then(() => type.querySelector('input[checked]').focus());
-
-};
+scope.querySelector('form').onreset = () => scrollIntoView(type).then(() => type.querySelector('input[checked]').focus());
 
 
 summary.querySelector('form').summary.onblur = function() { // Standardize the message
@@ -222,26 +192,16 @@ summary.querySelector('form').summary.oninput = function() {
 
     summary.querySelector('form > div > label > small').innerHTML = this.value.length +' / '+ this.maxLength + '<sub>50 - '+ (50 - this.maxLength) +'</sub>';
 
-};
+}
 summary.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
     if (e.submitter.classList.contains('finish')) {
 
-        currentTarget = significantChange;
-        significantChange.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
+        scrollIntoView(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
 
     } else {
 
-        currentTarget = body;
-        body.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(body).then(() => body.querySelector('form').body.focus());
+        scrollIntoView(body).then(() => body.querySelector('form').body.focus());
 
     }
 
@@ -250,21 +210,11 @@ summary.querySelector('form').onreset = function() {
 
     if (type.querySelector('form').type.value == 'revert') {
 
-        currentTarget = type;
-        type.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(type).then(() => type.querySelector('input[checked]').focus());
+        scrollIntoView(type).then(() => type.querySelector('input[checked]').focus());
 
     } else {
 
-        currentTarget = scope;
-        scope.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(scope).then(() => scope.querySelector('form').scope.focus());
+        scrollIntoView(scope).then(() => scope.querySelector('form').scope.focus());
 
     }
 
@@ -275,43 +225,24 @@ body.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
     if (e.submitter.classList.contains('finish')) {
 
-        currentTarget = significantChange;
-        significantChange.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
+        scrollIntoView(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
 
     } else {
 
-        currentTarget = footer;
-        footer.scrollIntoView({
-            behavior: 'smooth'
-        });
-
         if (type.querySelector('form').type.value == 'revert') {
 
-            waitTransition(footer).then(() => footer.querySelector('form').refs.focus());
+            scrollIntoView(footer).then(() => footer.querySelector('form').refs.focus());
 
         } else {
 
-            waitTransition(footer);
+            scrollIntoView(footer);
 
         }
 
     }
 
 };
-body.querySelector('form').onreset = function() {
-
-    currentTarget = summary;
-    summary.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-    waitTransition(summary).then(() => summary.querySelector('form').summary.focus());
-
-};
+body.querySelector('form').onreset = () => scrollIntoView(summary).then(() => summary.querySelector('form').summary.focus());
 
 
 for (let text of footer.querySelectorAll('form > div > label > input[type="text"]')) {
@@ -327,29 +258,18 @@ for (let text of footer.querySelectorAll('form > div > label > input[type="text"
 }
 
 footer.querySelector('form').breakingChangeDescription.oninput = e => footer.querySelector('form').breakingChangeSummary.required = Boolean(e.target.value.trim());
-
 footer.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
     significantChange.querySelector('form').significantChange.checked = Boolean(this.breakingChangeSummary.value.trim());
 
-    currentTarget = significantChange;
-    significantChange.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-    waitTransition(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
+    scrollIntoView(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
 
 };
 footer.querySelector('form').onreset = function() {
 
     footer.querySelector('form').breakingChangeSummary.required = false;
 
-    currentTarget = body;
-    body.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-    waitTransition(body).then(() => body.querySelector('form').body.focus());
+    scrollIntoView(body).then(() => body.querySelector('form').body.focus());
 
 };
 
@@ -387,30 +307,20 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
 
     result.querySelector('form > div > fieldset > code > span.value').innerHTML = `${result.querySelector('form').header.value.trim()}${result.querySelector('form').description.innerHTML.trim() ? (!body.querySelector('form').body.value.trim() && (footer.querySelector('form').coAuthoredBy.value.trim() || footer.querySelector('form').onBehalfOf.value.trim()) ? '\n\n\n' : '\n\n') + result.querySelector('form').description.innerHTML.replaceAll('<br>', '\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
 
-    currentTarget = result;
-    result.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-    waitTransition(result);
+    scrollIntoView(result);
 
 };
 significantChange.querySelector('form').onreset = function(e) {
 
     significantChange.querySelector('form').significantChange.checked = false;
 
-    currentTarget = footer;
-    footer.scrollIntoView({
-        behavior: 'smooth'
-    });
-
     if (type.querySelector('form').type.value == 'revert') {
 
-        waitTransition(footer).then(() => footer.querySelector('form').refs.focus());
+        scrollIntoView(footer).then(() => footer.querySelector('form').refs.focus());
 
     } else {
 
-        waitTransition(footer);
+        scrollIntoView(footer);
 
     }
 
@@ -429,23 +339,9 @@ result.querySelector('form').onsubmit = function(e) { e.preventDefault();
         footer.querySelector('form').reset();
         significantChange.querySelector('form').reset();
 
-        currentTarget = type;
-        type.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        waitTransition(type).then(() => type.querySelector('input[checked]').focus());
+        scrollIntoView(type).then(() => type.querySelector('input[checked]').focus());
 
     }
 
 };
-result.querySelector('form').onreset = function() {
-
-    currentTarget = significantChange;
-    significantChange.scrollIntoView({
-        behavior: 'smooth'
-    });
-
-    waitTransition(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());
-
-};
+result.querySelector('form').onreset = () => scrollIntoView(significantChange).then(() => significantChange.querySelector('form').significantChange.focus());

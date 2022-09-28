@@ -10,7 +10,7 @@
 html, body {
     height: 100%;
     overflow: hidden;
-
+    scroll-snap-type: both mandatory;
     scroll-behavior: smooth;
 }
 
@@ -25,6 +25,7 @@ main {
         width: 50%;
         height: calc(25% - 60px);
         overflow: hidden;
+        scroll-snap-align: start;
 
         display: flex;
         flex-flow: column;
