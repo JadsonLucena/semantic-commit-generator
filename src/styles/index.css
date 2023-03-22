@@ -314,6 +314,8 @@ footer {
     }
     footer > header {
         height: 100%;
+        width: max-content;
+        margin: 0 auto;
     }
     footer > aside {
         position: absolute;
@@ -321,5 +323,6 @@ footer {
         left: 0;
         padding: 0 5px;
         height: 100%;
+        z-index: -1;
     }
 }
