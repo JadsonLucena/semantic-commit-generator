@@ -297,8 +297,29 @@ footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 5px;
     }
         footer > aside > a {
-            padding: 0 5px 0 10px;
             color: #fff;
         }
+
+
+@media (min-width: 700px) {
+    main > section {
+        height: calc(25% - 28px);
+    }
+    footer {
+        padding: 0;
+        height: 28px;
+    }
+    footer > header {
+        height: 100%;
+    }
+    footer > aside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 5px;
+        height: 100%;
+    }
+}

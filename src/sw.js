@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v1.0.0';
+const CACHE_NAME = 'v1.1.0';
 
 const FILES_TO_CACHE = [
 	'./images/apple-touch-icon-192x192.webp',
