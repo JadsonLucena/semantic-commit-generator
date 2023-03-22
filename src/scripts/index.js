@@ -8,6 +8,13 @@ var result = document.querySelector('body > main > section#result');
 let sections = Array.from(document.querySelectorAll('main > section'));
 
 
+document.querySelector('footer > header > a > img').onerror = e => {
+
+    e.target.parentNode.remove();
+
+}
+
+
 function scrollIntoView(section) {
 
     return new Promise((resolve, reject) => {
