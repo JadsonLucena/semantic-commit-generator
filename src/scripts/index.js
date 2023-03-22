@@ -126,7 +126,7 @@ type.querySelector('form').onsubmit = function(e) { e.preventDefault();
 scope.querySelector('form').scope.onfocus = function() {
 
     let typeSize = type.querySelector('form').type.value.length;
-    let ornamentSize = (' ()!: ').length;
+    let ornamentSize = ('()!: ').length;
 
     let maxLength = 50 - typeSize - ornamentSize;
 
@@ -186,7 +186,7 @@ summary.querySelector('form').summary.onfocus = function() {
 
     let typeSize = type.querySelector('form').type.value.length;
     let scopeSize = scope.querySelector('form').scope.value.trim().length;
-    let ornamentSize = (scopeSize ? ' ()!: ' : '!: ').length;
+    let ornamentSize = (scopeSize ? '()!: ' : '!: ').length;
 
     let maxLength = 50 - typeSize - scopeSize - ornamentSize;
 
@@ -309,7 +309,7 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
     if (footer.querySelector('form').breakingChangeDescription.value.trim())
         footerContent.push('\n'+ footer.querySelector('form').breakingChangeDescription.value.trim());
 
-    result.querySelector('form').header.value = `${type.querySelector('form').type.value != 'other' ? type.querySelector('form').type.value : type.querySelector('form > div > label[for="other"] > span > input[name="otherType"]').value.trim()}${scope.querySelector('form').scope.value.trim() ? ' ('+ scope.querySelector('form').scope.value.trim() +')' : ''}${this.significantChange.checked ? '!' : ''}: ${summary.querySelector('form').summary.value.trim()}`;
+    result.querySelector('form').header.value = `${type.querySelector('form').type.value != 'other' ? type.querySelector('form').type.value : type.querySelector('form > div > label[for="other"] > span > input[name="otherType"]').value.trim()}${scope.querySelector('form').scope.value.trim() ? '('+ scope.querySelector('form').scope.value.trim() +')' : ''}${this.significantChange.checked ? '!' : ''}: ${summary.querySelector('form').summary.value.trim()}`;
     result.querySelector('form').description.innerHTML = `${body.querySelector('form').body.value.trim() ? body.querySelector('form').body.value.trim() : ''}${body.querySelector('form').body.value.trim() && footerContent.length ? '\n\n' : ''}${footerContent.length ? footerContent.join('\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
 
     result.querySelector('form > div > fieldset > code > span.value').innerHTML = `${result.querySelector('form').header.value.trim()}${result.querySelector('form').description.innerHTML.trim() ? (!body.querySelector('form').body.value.trim() && (footer.querySelector('form').coAuthoredBy.value.trim() || footer.querySelector('form').onBehalfOf.value.trim()) ? '\n\n\n' : '\n\n') + result.querySelector('form').description.innerHTML.replaceAll('<br>', '\n') : ''}`.replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('\n', '<br>').replaceAll(' ', '&nbsp;');
