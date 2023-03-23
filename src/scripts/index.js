@@ -5,14 +5,14 @@ var body = document.querySelector('body > main > section#body');
 var footer = document.querySelector('body > main > section#footer');
 var significantChange = document.querySelector('body > main > section#significantChange');
 var result = document.querySelector('body > main > section#result');
-let sections = Array.from(document.querySelectorAll('main > section'));
+var sections = Array.from(document.querySelectorAll('main > section'));
 
 
 document.querySelector('footer > header > a > img').onerror = e => {
 
     e.target.parentNode.remove();
 
-}
+};
 
 
 function scrollIntoView(section) {
@@ -50,7 +50,7 @@ function scrollIntoView(section) {
 
         }
 
-    })
+    });
 
 }
 
@@ -199,7 +199,7 @@ summary.querySelector('form').summary.oninput = function() {
 
     summary.querySelector('form > div > label > small').innerHTML = this.value.length +' / '+ this.maxLength + '<sub>50 - '+ (50 - this.maxLength) +'</sub>';
 
-}
+};
 summary.querySelector('form').onsubmit = function(e) { e.preventDefault();
 
     if (e.submitter.classList.contains('finish')) {
@@ -298,7 +298,7 @@ significantChange.querySelector('form').onsubmit = function(e) { e.preventDefaul
         footerContent.push(`Refs: ${footer.querySelector('form').refs.value.split(',').map(e => e.trim()).filter(e => e).join(', ')}`);
 
     if (footer.querySelector('form').coAuthoredBy.value.trim())
-        footer.querySelector('form').coAuthoredBy.value.split(',').map(e => e.trim()).filter(e => e).forEach(e => footerContent.push('Co-authored-by: '+ e))
+        footer.querySelector('form').coAuthoredBy.value.split(',').map(e => e.trim()).filter(e => e).forEach(e => footerContent.push('Co-authored-by: '+ e));
 
     if (footer.querySelector('form').onBehalfOf.value.trim())
         footerContent.push('on-behalf-of: '+ footer.querySelector('form').onBehalfOf.value.trim());
