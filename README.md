@@ -63,4 +63,4 @@ If BREAKING CHANGE is used, is recommended the use of the exclamation mark "!" i
 ### References
 
 > [Conventional Commits](https://www.conventionalcommits.org)\
-> [Contributing to Angular](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format)
+> [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/main/contributing-docs/commit-message-guidelines.md)
